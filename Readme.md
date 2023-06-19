@@ -1,4 +1,4 @@
-# Morse code
+# Library
 
 ## Getting Started
 
@@ -21,9 +21,9 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Morse code] <a name="about-project"></a>
+# 📖 [Library] <a name="about-project"></a>
 
-**[Morse code]** is a program that decodes morse code to their corresponding character or words.
+**[Library]** is a program that manage a library. You can add book or perform others things related to.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -38,7 +38,11 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Decode morse code into their corresponding character or words]**
+- **[Add students]**
+- **[Add teachers]**
+- **[Add rental]**
+- **[Add Books]**
+- **[List all book]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -55,7 +59,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
   cd my-folder
-  git clone https://github.com/touredri/morse-code.git
+  git clone https://github.com/touredri/library.git
 
 ### Usage
 
@@ -66,9 +70,7 @@ Run this code in terminal.
   IRB
 Run the methods.
 
-    decode_char(".-")
-    puts decode_word("-- -.--")
-    puts decode_message(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+ruby main.rb
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -78,10 +80,6 @@ Run the methods.
 👤 **Drissas**
 
 - GitHub: [@githubhandle](https://github.com/touredri)
-
-👤 **Patrick**
-
-- GitHub: [@githubhandle](https://github.com/Patfarmurs)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,7 +93,7 @@ Run the methods.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/touredri/morse_code/issues).
+Feel free to check the [issues page](https://github.com/touredri/library/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
