@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'person'
 require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
@@ -19,6 +21,4 @@ terminal.add_student(std1)
 puts std1.classroom.label
 
 book1 = Book.new('Legendary', 'author1')
-p Rental.new('Today', book1, person)
-p book1.rentals[0].date
-p person.rentals[0].book.author
+book1.add_rental(person, 'Today')
