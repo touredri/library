@@ -19,6 +19,6 @@ terminal.add_student(std1)
 puts std1.classroom.label
 
 book1 = Book.new('Legendary', 'author1')
-rental = Rental.new('Today', book1, person)
-puts book1.rentals[0].date
-puts person.rentals[0].book.author
+p Rental.new('Today', book1, person)
+p book1.rentals[0].date
+p person.rentals[0].book.author
