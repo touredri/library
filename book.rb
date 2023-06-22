@@ -1,3 +1,4 @@
+require_relative 'app'
 class Book
   attr_accessor :name, :author, :rentals, :title
 

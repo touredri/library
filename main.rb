@@ -5,18 +5,33 @@ require_relative 'classroom'
 require_relative 'student'
 require_relative 'rental'
 require_relative 'book'
+require_relative 'app'
 
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-capitalized_trimmed_person.correct_name
-
-terminal = Classroom.new('class1')
-std1 = Student.new(22, 'elv1')
-terminal.add_student(std1)
-puts std1.classroom.label
-
-book1 = Book.new('Legendary', 'author1')
-book1.add_rental(person, 'Today')
+def main
+  p "Please choose an option by entering a number"
+  p "1 - List all Books"
+  p "2 - List all Person"
+  p "3 - Create a person"
+  p "4 - Create a book"
+  p "5 - Create a Rental"
+  p "6 - List all Rentals for a given person id"
+  p "7 - Exit"
+  nbr = gets.chomp
+  case nbr
+  when 1
+    @listBooks.each do |element|
+      puts element
+    end
+  when 2
+    @listPerson.each do |element|
+      puts element
+    end
+  when 3
+    App.create_person()
+  when 4
+    App.create_book()
+  else
+    # type code here
+  end
+  #self.main()
+end
