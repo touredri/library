@@ -1,7 +1,8 @@
 require_relative 'app'
 class Book
   attr_accessor :name, :author, :rentals, :title
-  #attr_reader :id
+
+  # attr_reader :id
   def initialize(title, author)
     @title = title
     @author = author

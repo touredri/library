@@ -4,7 +4,7 @@ require_relative 'classroom'
 require_relative 'student'
 require_relative 'rental'
 require_relative 'book'
-#require_relative 'main'
+# require_relative 'main'
 
 
 class App
@@ -19,6 +19,7 @@ class App
       return true # It is not an integer
     end
   end
+
   def self.list_books
     @@listBooks
   end
@@ -46,14 +47,14 @@ class App
       new_person = Teacher.new(spc, age, name)
       puts 'Teacher created successfully'
       App.list_persons.push(new_person)
-    when  2
+    when 2
       print 'Name: '
       name = gets.chomp
       print 'Age: '
       age = gets.chomp.to_i
       print('Has parent permission? (Y/N: ')
       per = gets.chomp
-      new_person = Student.new(age ,name)
+      new_person = Student.new(age, name)
       new_person.parent_permission = per
       puts 'Student created successfully'
       App.list_persons.push(new_person)
@@ -87,10 +88,12 @@ class App
     App.list_persons.each do |person, index = 0|
       print "#{index + 1}) "
       if person.respond_to?(:specialisation)
-        puts "#{index +1} [Teacher] Name: #{person.name}  ID: #{person.id} Age: #{person.age} old is a #{person.specialisation}"
+        puts "#{index + 1} [Teacher] Name: #{person.name}
+              ID: #{person.id} Age: #{person.age} old is a #{person.specialisation}"
       end
       if person.respond_to?(:parent_permission)
-        puts "#{index +1} [Student] Name: #{person.name}  ID: #{person.id} Age: #{person.age} old has permissions: #{person.parent_permission} "
+        puts "#{index + 1} [Student] Name: #{person.name}  ID: #{person.id}
+        Age: #{person.age} old has permissions: #{person.parent_permission} "
       end
     end
     person_index = gets.chomp.to_i - 1
@@ -100,10 +103,11 @@ class App
     book.add_rental(person, date)
     puts 'Rental created successfully'
   end
+
   # list all rental for a given person
   def self.list_rental
     p "Select a person from the following list by number: "
-    App.list_persons.each do |person, index=0|
+    App.list_persons.each do |person, index = 0|
       p "#{index + 1}) #{person.name}"
     end
     person_index = gets.chomp.to_i - 1

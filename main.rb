@@ -20,12 +20,12 @@ def main
   case nbr
   when 1
     puts 'this is the list of Books'
-    App.list_books.each do |book, i=0|
+    App.list_books.each do |book, i = 0|
       p "#{i + 1}) Title: #{book.title} by Author: #{book.author}"
     end
   when 2
     puts 'this is the list of persons: '
-    App.list_persons.each do |person, i=0|
+    App.list_persons.each do |person, i = 0|
       print "#{i + 1}"
       if person.respond_to?(:specialisation)
         puts "[Teacher] Name: #{person.name}  ID: #{person.id}
