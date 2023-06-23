@@ -4,8 +4,6 @@ require_relative 'classroom'
 require_relative 'student'
 require_relative 'rental'
 require_relative 'book'
-# require_relative 'main'
-
 
 class App
   @@listBooks = []
@@ -106,14 +104,14 @@ class App
 
   # list all rental for a given person
   def self.list_rental
-    p "Select a person from the following list by number: "
+    puts 'Select a person from the following list by number: '
     App.list_persons.each do |person, index = 0|
-      p "#{index + 1}) #{person.name}"
+      puts "#{index + 1}) #{person.name}"
     end
     person_index = gets.chomp.to_i - 1
     person = App.list_persons[person_index]
     person.rentals.each do |rental|
-      p "#{rental.book.title} by #{rental.book.author} on #{rental.date}"
+      puts "#{rental.book.title} by #{rental.book.author} on #{rental.date}"
     end
   end
 end
