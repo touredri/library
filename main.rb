@@ -1,12 +1,8 @@
 require_relative 'person'
-require_relative 'capitalize_decorator'
-require_relative 'trimmer_decorator'
-require_relative 'classroom'
 require_relative 'student'
 require_relative 'rental'
 require_relative 'book'
 require_relative 'app'
-
 def main
   p "Please choose an option by entering a number"
   p "1 - List all Books"
@@ -17,6 +13,7 @@ def main
   p "6 - List all Rentals for a given person id"
   p "7 - Exit"
   nbr = gets.chomp
+  puts nbr
   case nbr
   when 1
     @listBooks.each do |element|
@@ -27,11 +24,19 @@ def main
       puts element
     end
   when 3
-    App.create_person()
+    App.create_person
   when 4
     App.create_book()
+  when 5
+    App.create_rental
+  when 6
+    App.list_rental
+  when 7
+    exit
   else
-    # type code here
+    puts "Please enter a valid number"
   end
-  #self.main()
 end
+
+p "Welcome to School library App"
+main()
