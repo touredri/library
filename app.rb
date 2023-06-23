@@ -6,24 +6,14 @@ require_relative 'rental'
 require_relative 'book'
 
 class App
-  @@listBooks = []
-  @@listPersons = []
-
-  def is_not_integer?(variable)
-    begin
-      Integer(variable)
-      return false # It is an integer
-    rescue ArgumentError
-      return true # It is not an integer
-    end
-  end
-
+  @@list_books = []
+  @@list_persons = []
   def self.list_books
-    @@listBooks
+    @@list_books
   end
 
   def self.list_persons
-    @@listPersons
+    @@list_persons
   end
 
   # create a new person
@@ -32,7 +22,7 @@ class App
     nb = gets.chomp.to_i
     unless [1, 2].include?(nb)
       puts 'Invalid : You must enter 1 ou 2'
-      self.create_person()
+      create_person
     end
     case nb
     when 1
@@ -77,9 +67,17 @@ class App
       puts "#{index + 1}) Title: #{book.title} by Author: #{book.author}"
     end
     book_index = gets.chomp.to_i - 1
-    if book_index == 0 || book_index >= book.length || (begin Integer(book_index); false; rescue; true; end)
+    if book_index.zero? || book_index >= book.length ||
+      (
+        begin
+          Integer(book_index)
+          false
+        rescue
+          true
+        end
+      )
       puts 'Please enter a book valid number'
-      self.create_rental
+      create_rental
     end
     book = App.list_books[book_index]
     puts 'Select a person from the following list by number: '
