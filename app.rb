@@ -58,29 +58,17 @@ class App
     puts 'Book created and added to the book list successfully'
   end
 
-  # Create a new rental
-  def self.create_rental
-    puts 'Select a book from the following list by number: '
-    list_books.each_with_index do |book, index|
-      puts "#{index + 1}) Title: #{book.title} by Author: #{book.author}"
+  # List all books
+  def self.list_book
+    puts 'This is the list of Books'
+    list_books.each_with_index do |book, i|
+      puts "#{i + 1}) Title: #{book.title} by Author: #{book.author}"
     end
+  end
 
-    book_index = gets.chomp.to_i - 1
-    if book_index < 0 || book_index >= list_books.length ||
-      begin
-        Integer(book_index)
-        false
-      rescue
-        true
-      end
-      puts 'Please enter a valid book number'
-      create_rental
-      return
-    end
-
-    book = list_books[book_index]
-
-    puts 'Select a person from the following list by number: '
+  # List all persons
+  def self.list_person
+    puts 'This is the list of persons: '
     list_persons.each_with_index do |person, index|
       print "#{index + 1}) "
       if person.respond_to?(:specialisation)
@@ -92,7 +80,24 @@ class App
         Age: #{person.age} old has permissions: #{person.parent_permission}"
       end
     end
+  end
 
+  # Create a new rental
+  def self.create_rental
+    puts 'Select a book from the following list by number: '
+    list_book
+    book_index = gets.chomp.to_i - 1
+    if book_index.negative? || book_index >= list_books.length ||
+      begin
+        book_index = Integer(book_index)
+      rescue ArgumentError
+        puts 'Please enter a valid book number'
+        create_rental
+        end
+    end
+    book = list_books[book_index]
+    puts 'Select a person from the following list by number: '
+    list_person
     person_index = gets.chomp.to_i - 1
     person = list_persons[person_index]
     print 'Date: '
@@ -105,12 +110,12 @@ class App
   def self.list_rental
     print 'Enter the ID of the person: '
     person_id = gets.chomp.to_i
-    person = list_persons.find { |person| person.id == person_id }
-    if person.nil?
+    person_ = list_persons.find { |person| person.id == person_id }
+    if person_.nil?
       puts 'Person not found'
       return
     end
-    person.rentals.each do |rental|
+    person_.rentals.each do |rental|
       puts "Book \"#{rental.book.title}\" by #{rental.book.author} on #{rental.date}"
     end
   end

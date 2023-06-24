@@ -5,29 +5,7 @@ require_relative 'book'
 require_relative 'app'
 def main
   choice_list
-  nbr = gets.chomp.to_i
-  unless [1, 2, 3, 4, 5, 6, 7].include?(nbr)
-    puts 'Invalid: You must choose one of the following options (number)'
-    main
-  end
-  case nbr
-  when 1
-    list_books
-  when 2
-    list_persons
-  when 3
-    App.create_person
-  when 4
-    App.create_book
-  when 5
-    App.create_rental
-  when 6
-    App.list_rental
-  when 7
-    exit
-  else
-    puts 'Please enter a valid number'
-  end
+  list_cases
   main
 end
 
@@ -42,17 +20,25 @@ def choice_list
   puts '7 - Exit'
 end
 
-def list_books
-  puts 'This is the list of Books'
-  App.list_books.each_with_index do |book, i|
-    puts "#{i + 1}) Title: #{book.title} by Author: #{book.author}"
-  end
-end
-
-def list_persons
-  puts 'This is the list of persons: '
-  App.list_persons.each_with_index do |person, i|
-    puts "#{i + 1}) #{person_details(person)}"
+def list_cases
+  nbr = gets.chomp.to_i
+  case nbr
+  when 1
+    App.list_book
+  when 2
+    App.list_person
+  when 3
+    App.create_person
+  when 4
+    App.create_book
+  when 5
+    App.create_rental
+  when 6
+    App.list_rental
+  when 7
+    exit
+  else
+    puts 'Invalid: You must choose one of the following options (number)'
   end
 end
 
