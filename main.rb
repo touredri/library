@@ -19,21 +19,20 @@ def choice_list
   puts '6 - List all Rentals for a given person'
   puts '7 - Exit'
 end
-def list_cases(nb)
-  case nb
-  when 1
-    App.list_book
-  when 2
-    App.list_person
-  when 3
-    App.create_person
-  when 4
-    App.create_book
-  when 5
-    App.create_rental
-  when 6
-    App.list_rental
-  when 7
+def list_cases(choice)
+  options = {
+    1 => :list_book,
+    2 => :list_person,
+    3 => :create_person,
+    4 => :create_book,
+    5 => :create_rental,
+    6 => :list_rental,
+  }
+
+  if options.key?(choice)
+    App.send(options[choice])
+  elsif nb == 7
+    puts 'Goodbye'
     exit
   else
     puts 'Invalid: You must choose one of the following options (number)'
