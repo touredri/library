@@ -17,33 +17,25 @@ class App
   def self.create_person
     print 'Do you want to create a teacher(1) or student(2)? [Input the number]: '
     nb = gets.chomp.to_i
-    unless [1, 2].include?(nb)
-      puts 'Invalid: You must enter 1 or 2'
-      create_person
-    end
-
     case nb
     when 1
-      print 'Name: '
-      name = gets.chomp
-      print 'Age: '
-      age = gets.chomp
-      print 'Specialisation: '
-      spc = gets.chomp
+      print 'Name: '; name = gets.chomp
+      print 'Age: '; age = gets.chomp
+      print 'Specialisation: '; spc = gets.chomp
       new_person = Teacher.new(spc, age, name)
       puts 'Teacher created successfully'
       list_persons.push(new_person)
     when 2
-      print 'Name: '
-      name = gets.chomp
-      print 'Age: '
-      age = gets.chomp.to_i
-      print 'Has parent permission? (Y/N): '
-      per = gets.chomp
+      print 'Name: '; name = gets.chomp
+      print 'Age: '; age = gets.chomp.to_i
+      print 'Has parent permission? (Y/N): '; per = gets.chomp
       new_person = Student.new(age, name)
       new_person.parent_permission = per
       puts 'Student created successfully'
       list_persons.push(new_person)
+    else
+      puts 'Invalid: You must enter 1 or 2'
+      create_person
     end
   end
 
@@ -86,14 +78,10 @@ class App
   def self.create_rental
     puts 'Select a book from the following list by number: '
     list_book
-    book_index = gets.chomp.to_i - 1
-    if book_index.negative? || book_index >= list_books.length ||
-      begin
-        book_index = Integer(book_index)
-      rescue ArgumentError
-        puts 'Please enter a valid book number'
-        create_rental
-        end
+    book_index = Integer(gets.chomp.to_i - 1) rescue nil
+    if book_index.nil? || book_index.negative? || book_index >= list_books.length
+      puts 'Please enter a valid book number'
+      create_rental
     end
     book = list_books[book_index]
     puts 'Select a person from the following list by number: '
