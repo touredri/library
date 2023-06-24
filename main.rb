@@ -4,7 +4,9 @@ require_relative 'rental'
 require_relative 'book'
 require_relative 'app'
 def main
-  list_cases
+  choice_list
+  nbr = gets.chomp.to_i
+  list_cases(nbr)
   main
 end
 def choice_list
@@ -17,10 +19,8 @@ def choice_list
   puts '6 - List all Rentals for a given person'
   puts '7 - Exit'
 end
-def list_cases
-  choice_list
-  nbr = gets.chomp.to_i
-  case nbr
+def list_cases(nb)
+  case nb
   when 1
     App.list_book
   when 2
