@@ -31,7 +31,7 @@ def list_cases(choice)
 
   if options.key?(choice)
     App.send(options[choice])
-  elsif nb == 7
+  elsif choice == 7
     puts 'Goodbye'
     exit
   else
