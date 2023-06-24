@@ -19,25 +19,39 @@ class App
     nb = gets.chomp.to_i
     case nb
     when 1
-      print 'Name: '; name = gets.chomp
-      print 'Age: '; age = gets.chomp
-      print 'Specialisation: '; spc = gets.chomp
-      new_person = Teacher.new(spc, age, name)
-      puts 'Teacher created successfully'
-      list_persons.push(new_person)
+      create_teacher
     when 2
-      print 'Name: '; name = gets.chomp
-      print 'Age: '; age = gets.chomp.to_i
-      print 'Has parent permission? (Y/N): '; per = gets.chomp
-      new_person = Student.new(age, name)
-      new_person.parent_permission = per
-      puts 'Student created successfully'
-      list_persons.push(new_person)
+      create_student
     else
       puts 'Invalid: You must enter 1 or 2'
       create_person
     end
   end
+
+  def self.create_teacher
+    print 'Name: '
+    name = gets.chomp
+    print 'Age: '
+    age = gets.chomp
+    print 'Specialisation: '
+    spc = gets.chomp
+    list_persons.push(Teacher.new(spc, age, name))
+    puts 'Teacher created successfully'
+  end
+
+  def self.create_student
+    print 'Name: '
+    name = gets.chomp
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Has parent permission? (Y/N): '
+    per = gets.chomp
+    new_person = Student.new(age, name)
+    new_person.parent_permission = per
+    puts 'Student created successfully'
+    list_persons.push(new_person)
+  end
+
 
   # Create a new book
   def self.create_book

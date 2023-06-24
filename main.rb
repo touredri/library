@@ -4,11 +4,9 @@ require_relative 'rental'
 require_relative 'book'
 require_relative 'app'
 def main
-  choice_list
   list_cases
   main
 end
-
 def choice_list
   puts 'Please choose an option by entering a number'
   puts '1 - List all Books'
@@ -19,8 +17,8 @@ def choice_list
   puts '6 - List all Rentals for a given person'
   puts '7 - Exit'
 end
-
 def list_cases
+  choice_list
   nbr = gets.chomp.to_i
   case nbr
   when 1
@@ -41,7 +39,6 @@ def list_cases
     puts 'Invalid: You must choose one of the following options (number)'
   end
 end
-
 def person_details(person)
   if person.respond_to?(:specialisation)
     "[Teacher] Name: #{person.name}  ID: #{person.id}
