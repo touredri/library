@@ -1,3 +1,4 @@
+# require_relative 'app'
 class Rental
   attr_accessor :book, :person, :date
 
