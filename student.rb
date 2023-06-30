@@ -13,4 +13,15 @@ class Student < Person
   def play_hooky
     '¯(ツ)/¯'
   end
+
+  def serialize
+    {
+      'type' => 'student',
+      'id' => id,
+      'name' => name,
+      'age' => age,
+      # 'rentals' => rentals.map(&:serialize),
+      'parent_permission' => parent_permission
+    }
+  end
 end
