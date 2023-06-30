@@ -3,8 +3,8 @@ require_relative 'nameable'
 # require_relative 'app'
 
 class Person < Nameable
-  attr_accessor :name, :age, :rentals, :parent_permission
-  attr_reader :id
+  attr_accessor :name, :age, :rentals, :parent_permission, :id
+  #attr_reader
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
@@ -33,5 +33,14 @@ class Person < Nameable
 
   def can_use_services?
     of_age? || @parent_permission
+  end
+
+  def serialize
+    {
+      'type' => self.class.name.downcase,
+      'id' => id,
+      'name' => name,
+      'age' => age,
+    }
   end
 end

@@ -1,8 +1,14 @@
 require_relative 'person_manager'
 require_relative 'book_manager'
 require_relative 'rental_manager'
+require_relative 'data_manager'
 
 class MenuHandler
+  def load_data
+    DataManager.load_data('persons.json')
+    DataManager.load_data('books.json')
+    DataManager.load_data('rentals.json')
+  end
   def display_menu
     puts 'Please choose an option by entering a number'
     puts '1 - List all Books'
@@ -15,10 +21,6 @@ class MenuHandler
   end
 
   def handle_choice(choice)
-    # person_manager = PersonManager.new
-    # book_manager = BookManager.new
-    # rental_manager = RentalManager.new
-
     case choice
     when 1
       BookManager.list_book
@@ -34,13 +36,16 @@ class MenuHandler
       PersonManager.person_list_rentals
     when 7
       puts 'Goodbye'
+      save_data
       exit!
     else
       puts 'Invalid choice. Please enter a valid option number.'
     end
   end
 
-  def quit?
-    @choice == 7
+  def save_data
+    DataManager.save_data('persons.json', PersonManager.list_persons)
+    DataManager.save_data('books.json', BookManager.list_books)
+    DataManager.save_data('rentals.json', RentalManager.list_rentals)
   end
 end

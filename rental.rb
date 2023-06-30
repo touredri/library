@@ -9,4 +9,16 @@ class Rental
     @person = person
     person.rentals.push(self) unless person.rentals.include?(self)
   end
+
+  def calculate_due_date
+    date + 10
+  end
+
+  def serialize
+    {
+      'date' => date,
+      'person_id' => person.id,
+      'book_id' => book.id
+    }
+  end
 end
