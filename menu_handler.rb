@@ -9,6 +9,7 @@ class MenuHandler
     DataManager.load_data('books.json')
     DataManager.load_data('rentals.json')
   end
+
   def display_menu
     puts 'Please choose an option by entering a number'
     puts '1 - List all Books'

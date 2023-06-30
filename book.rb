@@ -12,6 +12,7 @@ class Book
   def add_rental(person, date, rental_manager)
     rental_manager.create_rental(date, self, person)
   end
+
   def serialize
     {
       'title' => title,

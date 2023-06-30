@@ -12,9 +12,9 @@ class DataManager
     end
   end
 
-
   def self.load_data(filename)
     return {} unless File.exist?(filename)
+
     json_data = File.read(filename)
     unless json_data.empty?
       data = JSON.parse(json_data)
@@ -39,7 +39,7 @@ class DataManager
         person = Teacher.new(person_data['specialisation'], person_data['age'], person_data['name'])
       end
       person.id = person_data['id']
-      #person.rentals = person_data['rentals']
+      # person.rentals = person_data['rentals']
       PersonManager.list_persons.push(person)
     end
   end
@@ -48,7 +48,7 @@ class DataManager
     data.each do |book_data|
       book = Book.new(book_data['title'], book_data['author'])
       book.id = book_data['id']
-      #book.rentals = book_data['rentals']
+      # book.rentals = book_data['rentals']
       BookManager.list_books.push(book)
     end
   end
