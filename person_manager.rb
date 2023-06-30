@@ -71,7 +71,7 @@ class PersonManager
     self.list_person
     puts 'Enter the ID of the person you want to see the rentals: '
     id = gets.chomp.to_i
-    person = list_persons.find { |person| person.id == id }
+    person = list_persons.find { |persons| persons.id == id }
     if person.nil?
       puts 'Person not found! Try entering a valid ID'
       self.person_list_rentals

@@ -39,7 +39,6 @@ class DataManager
         person = Teacher.new(person_data['specialisation'], person_data['age'], person_data['name'])
       end
       person.id = person_data['id']
-      # person.rentals = person_data['rentals']
       PersonManager.list_persons.push(person)
     end
   end
@@ -48,20 +47,15 @@ class DataManager
     data.each do |book_data|
       book = Book.new(book_data['title'], book_data['author'])
       book.id = book_data['id']
-      # book.rentals = book_data['rentals']
       BookManager.list_books.push(book)
     end
   end
 
   def self.load_rentals(data)
     data.each do |rental_data|
-      book = BookManager.list_books.find { |book| book.id == rental_data['book_id'] }
-      person = PersonManager.list_persons.find { |person| person.id == rental_data['person_id'] }
+      book = BookManager.list_books.find { |books| books.id == rental_data['book_id'] }
+      person = PersonManager.list_persons.find { |persons| persons.id == rental_data['person_id'] }
       rental_date = rental_data['date']
-      if book.nil?
-        puts 'Invalid book ID'
-        return
-      end
       rental = Rental.new(rental_date, book, person)
       RentalManager.list_rentals.push(rental)
     end
